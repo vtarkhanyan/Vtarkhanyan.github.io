@@ -6,6 +6,11 @@
         <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.5.0/css/font-awesome.min.css">
         <link href="https://fonts.googleapis.com/css?family=Charm|Lato|Open+Sans" rel="stylesheet">
         <meta name="viewport" content="width=device-width, initial-scale=1">
+        <script>
+            function telNumber() {
+            document.getElementById("tel").innerHTML = "0935835**";
+}
+</script>
     </head>
 </head>
 
@@ -35,7 +40,8 @@
                 <H1>Hi, I'm Vigen!</H1>
                 <h2>A Armenian Code Academy student</h2>
                 <div id="btn">
-                    <button>Contact Me</button>
+                    <button onclick="telNumber()">Contact Me</button>
+                    <p id="tel"></p>
                 </div>
             </div>
         </section>
