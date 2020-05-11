@@ -110,6 +110,7 @@ a:hover {
 #btn {
     display: grid;
     grid-template-columns: 1fr 1fr 1fr;
+    border: 5px solid red;
 }
 
 #text button {
