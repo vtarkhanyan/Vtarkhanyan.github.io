@@ -7,6 +7,8 @@
 
 #main {
     display: grid;
+    grid-template-columns: auto;
+    grid-template-rows: 1fr auto 1fr;
     width: 800px;
     background-color: burlywood;
     margin: auto;
@@ -23,11 +25,56 @@
 }
 
 #section {
+    display: grid;
+    grid-template-columns: 1fr 2.5fr; 
+    padding: 25px 10px;
+    background-colors: azure;
     
-    background-color: azure
+}
+.section_div {
+
+    display: grid;
+    border: 2px dotted red
+}
+.section_div_left {
+    display: grid;
+    grid-template-columns: 1fr;
+    grid-template-rows: 1fr;
+    
+    
+}
+.section_div_left div {
+    borderc: 1px solid blue;
+}
+.div_left_ul {
+    
+    list-style: none;
+    line-height: 2.5
+}
+.div_left_li{
+    padding-left: 8px;
+borders: 2px solid;
+    background-color: aqua
+}
+.div_left_li i{
+    padding-right: 10px;
+    background-color: aqua
 }
 
 #footer {
     
     background-color: bisque
+}
+summary {
+  font-weight: bold;
+
+}
+summary:focus {
+  list-style-image: url(https://s3-us-west-2.amazonaws.com/s.cdpn.io/9632/down-arrow.svg);
+}
+summary::-webkit-details-marker {
+    font-size: 22px;
+
+  colorf: blue;
+
 }
