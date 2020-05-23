@@ -1,104 +1,157 @@
-<html>
-
 <head>
-    <title>ToDo list</title>
-    <link rel="stylesheet" href="style.css">
-    <link rel="stylesheet" href="all.css">
+    <title>Personal Portfollio</title>
 
+    <head>
+        <link rel="stylesheet" type="text/css" href="style.css">
+        <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.5.0/css/font-awesome.min.css">
+        <link href="https://fonts.googleapis.com/css?family=Charm|Lato|Open+Sans" rel="stylesheet">
+        <meta name="viewport" content="width=device-width, initial-scale=1">
+    </head>
 </head>
 
 <body>
-    <main id="main">
-        <header id="header">
-            <section id="header_section">
-                <h1 id="header_h1">ToDo List</h1>
-                <q id="header_q">We all find time to do what we really want to do.</q><br>
-                <cite>William Feather</cite>
-            </section>
-        </header>
-        <section id="section">
-            <div class="section_div section_div_left">
-                <div id="div_left_top">
-                    <ul class=div_left_ul>
-                        <li class="div_left_li"><i class="fas fa-calendar-day"></i>Today (<span>100</span>)</li>
-                        <li class="div_left_li"><i class="fas fa-calendar-alt"></i>Next 7 Days (<span>100</span>)</li>
-                        <li class="div_left_li"><i class="fas fa-calendar-minus"></i>Weekend (<span>100</span>)</li>
-                        <li class="div_left_li"><i class="fas fa-exclamation-triangle"></i>Important (<span>100</span>)</li>
-                        <li class="div_left_li"><i class="fas fa-trash-alt"></i>Trash (<span>100</span>)</li>
-                        <li class="div_left_li"><i class="fas fa-list-ul"></i>Done (<span>100</span>)</li>
-                        <li class="div_left_li"><i class="fab fa-ups"></i>Missed (<span>100</span>)</li>
-                        <li >
-                            <details>
-                                <summary>Categoris</summary>
-                                <ul class=div_left_ul>
-                                    <li class="div_left_li">
-                                        <i class="fas fa-user-cog"></i>Work(<span>100</span>)</li>
-                                    <li class="div_left_li"><i class="fas fa-user-check"></i>Personal (<span>100</span>)</li>
-                                    <li class="div_left_li"><i class="fas fa-wind"></i>Other (<span>100</span>)</li>
-                                </ul>
-                            </details>
-                        </li>
-                    </ul>
+    <header id="header">
+        <nav id="navbar">
+            <ul>
+                <a href="#header">
+                    <li><span>Home</span></li>
+                </a>
+                <a href="#myself">
+                    <li>About</li>
+                </a>
+                <a href="#portfolio">
+                    <li>Portfolio</li>
+                </a>
+                <a href="#contact">
+                    <li>Contact</li>
+                </a>
+            </ul>
+        </nav>
+        <section id="welcome-section">
+            <div id="img">
+                <img src="https://drive.google.com/uc?id=1Sb9y6ceI2_KwpEscoljPlmInXizZfFS3">
+            </div>
+            <div id="text">
+                <H1>Hi, I'm Vigen!</H1>
+                <h2>A Freecodecamp student</h2>
+                <div id="btn">
+                    <button>Contact Me</button>
                 </div>
             </div>
-            <div class="section_div section_div_right">
-               
-                   <div id="name_data"></div>
-                   <div id="getContent" class="div_right_top_add">
-                      <label>Importance:  
-                       <input type="radio" id="important" name="importance" value="important">
-                              <label for="important">Important</label>
-                       <input type="radio" id="casual" name="importance" value="casual">
-                            <label for="casual">Casual</label>
-                            
-                     </label><br>
-                            <label for="dueto">Scheduled time:</label >
-                       <input type="date" id="dueto" name="dueto"><br>
-                            
-                            
-                       <label class="areacentre" for="textvalue">Add tasks: </label>
-                       <textarea id="w3mission" rows="8" cols="21">
-
-                     </textarea>
-          
-                            
-                   </div>
-                   
-                <!--<div id="section_div_right">
-                    <div class="div_right_top"> 
-                        <fieldset id="important_fiel" class="top_fieldset">
-                            <legend>Important</legend>
-                                <div class="top_fieldset_div bg_color">
-                                    <div class="div_left"><i class="far fa-circle"></i></div>
-                                    <div class="div_mid overline">cccdfd fgccfdg ccdfdccc cc  ccc1 cccdfd fgccfdg ccdfdccc cc  ccc1 cccdfd fgccfdg ccdfdccc cc  ccc1 cccdfd fgccfdg ccdfdccc cc  ccc1 cccdfd fgccfdg ccdfdccc cc  ccc1</div>
-                                    <div class="div_right"><i class="far fa-edit"></i><i class="far fa-trash-alt"></i></div>
-                                </div>
-                             
-
-                        </fieldset>                   
-                    </div>
-                     <div class="div_right_top"> 
-                        <fieldset class="top_fieldset">
-                            <legend>Casual</legend>
-                                <div class="top_fieldset_div">
-                                    <div class="div_left"><i class="far fa-circle"></i></div>
-                                    <div class="div_mid">cccdfd fgccfdg ccdfdccc cc  ccc1 cccdfd fgccfdg ccdfdccc cc  ccc1 cccdfd fgccfdg ccdfdccc cc  ccc1 cccdfd fgccfdg ccdfdccc cc  ccc1 cccdfd fgccfdg ccdfdccc cc  ccc1</div>
-                                    <div class="div_right"><i class="far fa-edit"></i><i class="far fa-trash-alt"></i></div>
-                                </div>
-                                 
-                        </fieldset>                   
-                    </div> -->
-
-                </div>
-                 <button id="btn"><i class="fas fa-plus"></i>Add tasks</button>
-                 <button id="btn1"><i class="fas fa-plus"></i>Add tasks</button>
-                 <input id="input"/>    
-            </div>
-           
         </section>
-        <footer id="footer">adasd</footer>
+    </header>
+    <main>
+        <section id="myself">
+            <div id="about">
+                <h2>About myself</h2>
+                <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.</p>
+            </div>
+            <div id="skill">
+                <h2><span>My Skills</span></h2>
+                <div id="skill_main">
+                    <div class="skill_item">
+                        <h4>Finance 92%</h4>
+                        <div class="progres">
+                            <div class="progres_bar bar1"></div>
+                        </div>
+                    </div>
+                    <div class="skill_item">
+                        <h4>Marketing 85%</h4>
+                        <div class="progres">
+                            <div class="progres_bar bar2"></div>
+                        </div>
+                    </div>
+                    <div class="skill_item">
+                        <h4>Web Development 55%</h4>
+                        <div class="progres">
+                            <div class="progres_bar bar3"></div>
+                        </div>
+                    </div>
+                    <div class="skill_item">
+                        <h4>Web Design 40%</h4>
+                        <div class="progres">
+                            <div class="progres_bar bar4"></div>
+                        </div>
+                    </div>
+
+
+
+                </div>
+            </div>
+        </section>
+        <section id="projects">
+            <div id="my_port">
+                <H2> My <span>Portfolio</span> </H2>
+            </div>
+            <div id="port_list">
+                <div class="project-tile" id="port_item1">
+                    <div>
+                        <a href="https://codepen.io/Tarkhanyan/full/jzaawZ" target="_blank"><img src="https://drive.google.com/uc?id=1AEa8I0eUbmkeHhLwHnClRQU7M8gNKbJE"> </a>
+                    </div>
+                </div>
+                <div class="project-tile" id="port_item2">
+                    <div>
+                        <a href="https://codepen.io/Tarkhanyan/full/MZeBey" target="_blank"><img src="https://drive.google.com/uc?id=1O8Qpzl-b7nraW16UAUOBzNlwjsWisjr1"> </a>
+                    </div>
+                </div>
+
+                <div id="port_item3">
+                    <div>
+                        <a href="https://codepen.io/Tarkhanyan/full/oaXrLL" target="_blank"><img src="https://drive.google.com/uc?id=15heSDeiHEoovf3qgAJiy6gmM-lzlj7gt"> </a>
+                    </div>
+                </div>
+                <div id="port_item4">
+                    <div>
+                        <a href="https://codepen.io/Tarkhanyan/full/YOoXQj" target="_blank"><img src="https://drive.google.com/uc?id=1efFPZ4BynKwcC1fCZB8fNLdJHP0ZYeBh"> </a>
+                    </div>
+
+                </div>
+                <div id="port_item5">
+                    <div>
+                        <a href="https://codepen.io/Tarkhanyan/full/YOoXQj" target="_blank"><img src="https://drive.google.com/uc?id=1nXDGL23FIniY8Sg4PVl-rpaj-O7q6zT9"> </a>
+                    </div>
+
+                </div>
+                <div id="port_item6">
+                    <div>
+                        <a href="https://codepen.io/Tarkhanyan/full/oaXrLL" target="_blank"><img src="6.jpg"> </a>
+                    </div>
+
+                </div>
+            </div>
+        </section>
+        <section id="contact">
+            <div id="my_cont">
+                <H2> <span>Contact</span> Me </H2>
+            </div>
+            <div id="cont_list">
+                <div id="cont_items">
+                    <div>
+                        <button class="btn btn1"><a  ><i class="fa fa-facebook-f fa-3x"></i> </a></button>
+                        <button class="btn btn2"><a><i class="fa fa-vk fa-3x"></i> </a></button>
+                        <button class="btn btn3"><a><i class="fa fa-linkedin fa-3x"></i> </a></button>
+                        <button class="btn btn4"><a><i class="fa fa-google-plus fa-3x"></i> </a></button>
+                        <button class="btn btn5"><a id="profile-link" target="_blank" href="https://github.com/vtarkhanyan/Hello-world"><i class="fa fa-github fa-3x"></i> </a></button>
+
+                    </div>
+                </div>
+                <div id="cont_form">
+                    <form>
+                        <label>Name:</label><input type="text">
+                        <label>Email:</label><input type="email">
+                        <label>Comment:</label><textarea></textarea>
+                        <button>Submit</button>
+
+                    </form>
+                </div>
+            </div>
+        </section>
     </main>
-   
+    <footer id="footer">
+        <div>
+            <p>Written and coded by <span>Vigen Tarkhanyan</span></p>
+        </div>
+    </footer>
 </body>
-     <script src="script.js"></script>
+
 </html>
