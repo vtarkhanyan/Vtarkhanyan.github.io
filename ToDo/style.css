@@ -120,3 +120,26 @@ summary::-webkit-details-marker {
     padding-right: 10px;
         
 }
+
+.fa-check{
+    color: green;
+}
+.overline{
+    font-style: italic;
+    text-decoration: line-through;
+}
+.bg_color {
+    background-color: azure;
+}
+
+.div_right_top_add *{
+   
+    margin-top: 30px;
+font-size: 22;
+    border-radius: 8px
+    
+}
+.div_right_top_add input[type="text"]{
+    height: 100px;
+    
+}
