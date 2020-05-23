@@ -6,6 +6,11 @@
         <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.5.0/css/font-awesome.min.css">
         <link href="https://fonts.googleapis.com/css?family=Charm|Lato|Open+Sans" rel="stylesheet">
         <meta name="viewport" content="width=device-width, initial-scale=1">
+        <script>
+            function telNumber() {
+            document.getElementById("tel").innerHTML = "0935835**";
+}
+</script>
     </head>
 </head>
 
@@ -16,7 +21,7 @@
                 <a href="#header">
                     <li><span>Home</span></li>
                 </a>
-                <a href="#myself">
+                <a href="ToDo/index.html">
                     <li>About</li>
                 </a>
                  <a href="#projects">
@@ -35,8 +40,10 @@
                 <H1>Hi, I'm Vigen!</H1>
                  <h2> Armenian Code Academy student</h2>
                 <div id="btn">
-                    <button>Contact Me</button>
+                     <button id="tel" onclick="telNumber()">Contact Me</button>
+                   
                 </div>
+                
             </div>
         </section>
     </header>
@@ -127,11 +134,14 @@
             <div id="cont_list">
                 <div id="cont_items">
                     <div>
-                        <button class="btn btn1"><a  ><i class="fa fa-facebook-f fa-3x"></i> </a></button>
+                        <button class="btn btn1"><a target="_blank" href="https://www.facebook.com/profile.php?id=100000804281989"><i class="fa fa-facebook-f fa-3x"></i> </a></button>
                         <button class="btn btn2"><a><i class="fa fa-vk fa-3x"></i> </a></button>
-                        <button class="btn btn3"><a><i class="fa fa-linkedin fa-3x"></i> </a></button>
+                       <button class="btn btn3"><a target="_blank" href="https://www.linkedin.com/in/vigen-tarkhanyan-4397326a/"><i class="fa fa-linkedin fa-3x"></i> </a></button>
                         <button class="btn btn4"><a><i class="fa fa-google-plus fa-3x"></i> </a></button>
-                        <button class="btn btn5"><a id="profile-link" target="_blank" href="https://github.com/vtarkhanyan/Hello-world"><i class="fa fa-github fa-3x"></i> </a></button>
+                         <button class="btn btn5"><a id="profile-link" target="_blank" href="https://github.com/vtarkhanyan"><i class="fa fa-github fa-3x"></i> </a></button>
+
+                    </div>
+                </div>
 
                     </div>
                 </div>
