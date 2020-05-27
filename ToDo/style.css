@@ -82,11 +82,8 @@ summary::-webkit-details-marker {
 
 }
 
-.section_div_right divf{
-    border: 2px solid green;
-    paddingx: 0 20;
-    line-height: 1.3;
-    margin-bottom: 200
+.section_div_rightf{
+   text-align: center;
 }
 #name_data {
     text-align: center;
@@ -98,13 +95,16 @@ summary::-webkit-details-marker {
 }
 .top_fieldset_div {
     display: grid;
-    grid-template-columns: 24px auto 50px;
+    grid-template-columns: 24px auto 140px;
     align-items: center;
     margin-bottom: 15px;
     border: 2px solid red
 }
 .div_mid {
     margin-right: 5px
+}
+.div_right {
+ text-align: end
 }
 .div_right *{
     padding-right: 7
@@ -132,14 +132,18 @@ summary::-webkit-details-marker {
     background-color: azure;
 }
 
-.div_right_top_add *{
-   
-    margin-top: 30px;
+.div_right_top_add {
+    margin-top:20px; 
+    border: 2px solid;
+    width: 100%;
+    text-align: center;
+
 font-size: 22;
     border-radius: 8px
     
 }
-.div_right_top_add input[type="text"]{
-    height: 100px;
-    
+.div_right_top_add *{
+margin-top: 20px;
+    display: inline-block;
 }
+
