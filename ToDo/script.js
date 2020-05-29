@@ -32,12 +32,18 @@ let id = 0
 
 const input = document.getElementById("input");
 const important_fiel_div = document.getElementById("important_fiel_div");
-const casual_fiel_div = document.getElementById("casual_fiel_div");
+
+const important_legend = document.getElementById("important_legend");
+const usual_legend = document.getElementById("usual_legend")
+const usual_fiel_div = document.getElementById("usual_fiel_div");
+
 let today = []
+let allID = document.getElementById("allID")
 let todayID = document.getElementById("todayID")
 let nextdaysID = document.getElementById("nextdaysID")
 let weekendID = document.getElementById("weekendID")
 let importantID = document.getElementById("importantID");
+let usualID = document.getElementById("usualID");
 let trashID = document.getElementById("trashID");
 let doneID = document.getElementById("doneID");
 let missedID = document.getElementById("missedID");
@@ -139,7 +145,7 @@ function addText(value, icon, icontext, count) {
     }
 
     function trash(event) {
-
+         alert("Are you sure to remove the task?")
         console.log(event.target.getAttribute("trash"))
 
         console.log(event.path[2])
@@ -161,7 +167,7 @@ function addText(value, icon, icontext, count) {
             today[event.target.attributes.edit.nodeValue]["edit"] = false
             div2.contentEditable = false
             div2.style.height = "auto"
-            div2.style.backgroundColor = "burlywood"
+            div2.style.backgroundColor = "inherit";
             div2.style.color = "black";
             today[event.target.attributes.edit.nodeValue]["text"] = div2.textContent
 
@@ -171,8 +177,8 @@ function addText(value, icon, icontext, count) {
             today[event.target.attributes.edit.nodeValue]["edit"] = true
             div2.contentEditable = true
             div2.style.height = "30px"
-            div2.style.backgroundColor = "cornsilk"
-            div2.style.color = "red";
+            div2.style.backgroundColor = "RGBA(63,94,251,0.7)"
+            div2.style.color = "white";
         }
 
         /*if (div_mid[event.target.getAttribute("edit")].contentEditable == "false") {
@@ -241,9 +247,9 @@ function addTask(value) {
     let att7 = document.createAttribute("value");
     let att28 = document.createAttribute("checked");
     att14.value = "radio"
-    att6.value = "casual"
+    att6.value = "usual"
     att15.value = "importance"
-    att7.value = "casual"
+    att7.value = "usual"
 
     input1.setAttributeNode(att14);
     input1.setAttributeNode(att6);
@@ -254,7 +260,7 @@ function addTask(value) {
     let br2 = document.createElement("br");
     div.appendChild(br2)
     let label5 = document.createElement("label");
-    label5.textContent = " Categoris: ";
+    label5.textContent = " Category: ";
     div.appendChild(label5)
     
     
@@ -321,7 +327,7 @@ let label7 = document.createElement("label");
 
 
     let label2 = document.createElement("label");
-    label2.textContent = " Casual ";
+    label2.textContent = " Usual ";
     label.appendChild(label2);
     let br1 = document.createElement("br");
     div.appendChild(br1)
@@ -346,7 +352,7 @@ let label7 = document.createElement("label");
     let br = document.createElement("br");
     div.appendChild(br)
     let span = document.createElement("span");
-    span.textContent = " Add tasks: ";
+    span.textContent = " Task description: ";
     div.appendChild(span)
     let textarea = document.createElement("textarea");
     let att11 = document.createAttribute("id");
@@ -443,9 +449,11 @@ let section_div_right = document.getElementById("section_div_right")
 btn1.addEventListener("click", bobo1)
 
 function bobo1() {
+    important_legend.textContent = "ADD NEW TASKS"
+    usual_legend.textContent = ""
     important_fiel_div.innerHTML = addTask().outerHTML
-    casual_fiel_div.innerHTML = ""
-    console.log(addTask())
+    usual_fiel_div.innerHTML = ""
+    addTask()
 
 }
 
@@ -460,10 +468,16 @@ let bobo2 = " ";
 
 
 function bobo() {
-
+    important_legend.textContent = "Important"
+    usual_legend.textContent = "Usual"
     bobo2 = document.getElementById("dueto")
+    if(time(bobo2.value)<date()){
+       
+    }else{
+          alert("Are you sure to create an expired task?");
+    }
     let bobo3 = document.getElementById("important");
-    let bobo4 = document.getElementById("casual");
+    let bobo4 = document.getElementById("usual");
     let bobo5 = document.getElementById("work");
     let bobo6 = document.getElementById("personal");
     let bobo7 = document.getElementById("other");
@@ -501,36 +515,39 @@ function bobo() {
 
         today.push(obj)
         id++
-
+        allID.textContent = today.length
         todayID.textContent = today.filter(function (x) {
-            return x.date == date()
+            return x.date == date() && x.done == false && x.trash == false
         }).length
         nextdaysID.textContent = today.filter(function (x) {
-            return x.date != date()
+            return x.date != date() && x.done == false && x.trash == false && time(x.date) > time(date())
         }).length
         weekendID.textContent = today.filter(function (x) {
-            return weekend(x.date) == 0 || weekend(x.date) == 6
+            return (weekend(x.date) == 0 || weekend(x.date) == 6)  && x.done == false && x.trash == false
         }).length
         importantID.textContent = today.filter(function (x) {
-            return x.importance == "important"
+            return x.importance == "important"  && x.done == false && x.trash == false
+        }).length
+        usualID.textContent = today.filter(function (x) {
+            return x.importance == "usual" && x.done == false && x.trash == false
         }).length
 
         missedID.textContent = today.filter(function (x) {
-            return day(x.date) < day1()
+            return day(x.date) < day1()  && x.done == false && x.trash == false
         }).length
         workID.textContent = today.filter(function (x) {
-            return x.categoris == "work"
+            return x.categoris == "work"  && x.done == false && x.trash == false
         }).length
         personalID.textContent = today.filter(function (x) {
-            return x.categoris == "personal"
+            return x.categoris == "personal"  && x.done == false && x.trash == false
         }).length
         otherID.textContent = today.filter(function (x) {
-            return x.categoris == "other"
+            return x.categoris == "other"  && x.done == false && x.trash == false
         }).length
 
 
-        important_fiel_div.innerHTML = ""
-        /*casual_fiel_div.innerHTML = ""*/
+        important_fiel_div.innerHTML = " "
+        /*usual_fiel_div.innerHTML = ""*/
         for (let i = 0; i < today.length; i++) {
             let icon;
             if (today[i]["categoris"] == "work") {
@@ -543,9 +560,11 @@ function bobo() {
             }
             if (today[i]["done"] == false && today[i]["trash"] == false) {
                 if (today[i]["importance"] == "important") {
+                 
                     important_fiel_div.append(addText(today[i]["text"], icon, " " + today[i]["categoris"], today[i]["id"]))
                 } else {
-                    casual_fiel_div.append(addText(today[i]["text"], icon, " " + today[i]["categoris"], today[i]["id"]))
+             
+                    usual_fiel_div.append(addText(today[i]["text"], icon, " " + today[i]["categoris"], today[i]["id"]))
                 }
             }
         }
@@ -569,12 +588,12 @@ for (let i = 0; i < div_left_li.length; i++) {
 function chenge(event) {
 
     let str = event.target.innerText
-    console.log(str)
+    
 
     function filter(bool) {
         for (let i = 0; i < today.length; i++) {
             let icon;
-            j = i;
+          
             if (today[i]["categoris"] == "work") {
                 icon = "fas fa-user-cog"
             } else if (today[i]["categoris"] == "personal") {
@@ -588,10 +607,92 @@ function chenge(event) {
             if (bool(i) && today[i]["done"] == false && today[i]["trash"] == false) {
 
                 if (today[i]["importance"] == "important") {
-                    console.log("bool(i)")
+              
                     important_fiel_div.append(addText(today[i]["text"], icon, " " + today[i]["categoris"], today[i]["id"]))
                 } else {
-                    casual_fiel_div.append(addText(today[i]["text"], icon, " " + today[i]["categoris"], today[i]["id"]))
+                    usual_fiel_div.append(addText(today[i]["text"], icon, " " + today[i]["categoris"], today[i]["id"]))
+                }
+            }
+        }
+
+
+    }
+    function filterALL(bool) {
+        for (let i = 0; i < today.length; i++) {
+            let icon;
+          
+            if (today[i]["categoris"] == "work") {
+                icon = "fas fa-user-cog"
+            } else if (today[i]["categoris"] == "personal") {
+                icon = "fas fa-user-check"
+            } else {
+                icon = "fas fa-wind"
+
+            }
+
+
+            if (bool(i)) {
+
+                if (today[i]["importance"] == "important") {
+              
+                    important_fiel_div.append(addText(today[i]["text"], icon, " " + today[i]["categoris"], today[i]["id"]))
+                } else {
+                    usual_fiel_div.append(addText(today[i]["text"], icon, " " + today[i]["categoris"], today[i]["id"]))
+                }
+            }
+        }
+
+
+    }
+        function filterTrash(bool) {
+        for (let i = 0; i < today.length; i++) {
+            let icon;
+          
+            if (today[i]["categoris"] == "work") {
+                icon = "fas fa-user-cog"
+            } else if (today[i]["categoris"] == "personal") {
+                icon = "fas fa-user-check"
+            } else {
+                icon = "fas fa-wind"
+
+            }
+
+
+            if (bool(i)) {
+
+                if (today[i]["importance"] == "important") {
+              
+                    important_fiel_div.append(addText(today[i]["text"], icon, " " + today[i]["categoris"], today[i]["id"]))
+                } else {
+                    usual_fiel_div.append(addText(today[i]["text"], icon, " " + today[i]["categoris"], today[i]["id"]))
+                }
+            }
+        }
+
+
+    }       
+    
+    function filterDone(bool) {
+        for (let i = 0; i < today.length; i++) {
+            let icon;
+          
+            if (today[i]["categoris"] == "work") {
+                icon = "fas fa-user-cog"
+            } else if (today[i]["categoris"] == "personal") {
+                icon = "fas fa-user-check"
+            } else {
+                icon = "fas fa-wind"
+
+            }
+
+
+            if (bool(i)) {
+
+                if (today[i]["importance"] == "important") {
+              
+                    important_fiel_div.append(addText(today[i]["text"], icon, " " + today[i]["categoris"], today[i]["id"]))
+                } else {
+                    usual_fiel_div.append(addText(today[i]["text"], icon, " " + today[i]["categoris"], today[i]["id"]))
                 }
             }
         }
@@ -599,9 +700,19 @@ function chenge(event) {
 
     }
 
+    if (str.startsWith("All")) {
+        important_fiel_div.innerHTML = " "
+        usual_fiel_div.innerHTML = " "
+        filterALL(function bool(i) {
+
+            return today[i]
+        })
+
+
+    }
     if (str.startsWith("Today")) {
-        important_fiel_div.innerHTML = ""
-        casual_fiel_div.innerHTML = ""
+        important_fiel_div.innerHTML = " "
+        usual_fiel_div.innerHTML = " "
         filter(function bool(i) {
 
             return today[i]["date"] == date()
@@ -610,72 +721,80 @@ function chenge(event) {
 
     }
     if (str.startsWith("Next")) {
-        important_fiel_div.innerHTML = ""
-        casual_fiel_div.innerHTML = ""
+        important_fiel_div.innerHTML = " "
+        usual_fiel_div.innerHTML = " "
         filter(function bool(i) {
 
             return time(today[i]["date"]) > time(date())
         })
     }
     if (str.startsWith("Weekend")) {
-        important_fiel_div.innerHTML = ""
-        casual_fiel_div.innerHTML = ""
+        important_fiel_div.innerHTML = " "
+        usual_fiel_div.innerHTML = " "
         filter(function bool(i) {
 
             return weekend(today[i]["date"]) == 0 || weekend(today[i]["date"]) == 6
         })
     }
     if (str.startsWith("Important")) {
-        important_fiel_div.innerHTML = ""
-        casual_fiel_div.innerHTML = ""
+        important_fiel_div.innerHTML = " "
+        usual_fiel_div.innerHTML = " "
         filter(function bool(i) {
 
             return today[i]["importance"] == "important"
         })
     }
+    if (str.startsWith("Usual")) {
+        important_fiel_div.innerHTML = " "
+        usual_fiel_div.innerHTML = " "
+        filter(function bool(i) {
+
+            return today[i]["importance"] == "usual"
+        })
+    }
     if (str.startsWith("Missed")) {
-        important_fiel_div.innerHTML = "ssafafaf"
-        casual_fiel_div.innerHTML = "fafasfafa"
+        important_fiel_div.innerHTML = " "
+        usual_fiel_div.innerHTML = " "
         filter(function bool(i) {
 
             return time(today[i]["date"]) < time(date())
         })
     }
-    /*if(str.startsWith("Trash")){
+    if(str.startsWith("Trash")){
        important_fiel_div.innerHTML = ""
-        casual_fiel_div.innerHTML = ""
-        filter(  function bool(i){
+        usual_fiel_div.innerHTML = ""
+        filterTrash(function bool(i){
        console.log(today[i]["trash"])
-       return today[i]["trash"]
+       return today[i]["trash"] == true
        })  
-       }*/
-    /*if(str.startsWith("Important")){
+       }
+    if(str.startsWith("Done")){
        important_fiel_div.innerHTML = ""
-        casual_fiel_div.innerHTML = ""
-        filter(  function bool(i){
+        usual_fiel_div.innerHTML = ""
+       filterDone(  function bool(i){
        
-       return today[i]["importance"]=="important"
+       return today[i]["done"]==true
        })  
-       }*/
+       }
     if (str.startsWith("Work")) {
-        important_fiel_div.innerHTML = ""
-        casual_fiel_div.innerHTML = ""
+        important_fiel_div.innerHTML = " "
+        usual_fiel_div.innerHTML = " "
         filter(function bool(i) {
 
             return today[i]["categoris"] == "work"
         })
     }
     if (str.startsWith("Personal")) {
-        important_fiel_div.innerHTML = ""
-        casual_fiel_div.innerHTML = ""
+        important_fiel_div.innerHTML = " "
+        usual_fiel_div.innerHTML = " "
         filter(function bool(i) {
 
             return today[i]["categoris"] == "personal"
         })
     }
     if (str.startsWith("Other")) {
-        important_fiel_div.innerHTML = ""
-        casual_fiel_div.innerHTML = ""
+        important_fiel_div.innerHTML = " "
+        usual_fiel_div.innerHTML = " "
         filter(function bool(i) {
 
             return today[i]["categoris"] == "other"
