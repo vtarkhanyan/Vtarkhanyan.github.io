@@ -256,9 +256,8 @@ function addTask(value) {
     let label5 = document.createElement("label");
     label5.textContent = " Categoris: ";
     div.appendChild(label5)
-    let label4 = document.createElement("label");
-    label4.textContent = " Work ";
-    label5.appendChild(label4)
+    
+    
     let input3 = document.createElement("input");
     let att16 = document.createAttribute("type")
     let att17 = document.createAttribute("id");
@@ -274,10 +273,10 @@ function addTask(value) {
     input3.setAttributeNode(att18);
     input3.setAttributeNode(att19);
     label5.appendChild(input3);
-
-    let label6 = document.createElement("label");
-    label6.textContent = " Personal ";
-    label5.appendChild(label6)
+     let label4 = document.createElement("label");
+    label4.textContent = " Work ";
+    label5.appendChild(label4)
+    
     let input4 = document.createElement("input");
     let att20 = document.createAttribute("type")
     let att21 = document.createAttribute("id");
@@ -294,11 +293,12 @@ function addTask(value) {
     input4.setAttributeNode(att22);
     input4.setAttributeNode(att23);
     input4.setAttributeNode(att29);
-    label6.appendChild(input4);
-
-    let label7 = document.createElement("label");
-    label7.textContent = " Other ";
-    label5.appendChild(label7)
+    label5.appendChild(input4);
+let label6 = document.createElement("label");
+    label6.textContent = " Personal ";
+    label5.appendChild(label6)
+    
+    
     let input5 = document.createElement("input");
     let att24 = document.createAttribute("type")
     let att25 = document.createAttribute("id");
@@ -313,8 +313,10 @@ function addTask(value) {
     input5.setAttributeNode(att25);
     input5.setAttributeNode(att26);
     input5.setAttributeNode(att27);
-    label7.appendChild(input5);
-
+    label5.appendChild(input5);
+let label7 = document.createElement("label");
+    label7.textContent = " Other ";
+    label5.appendChild(label7)
 
 
 
