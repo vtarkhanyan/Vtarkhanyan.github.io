@@ -20,16 +20,18 @@
             <div class="section_div section_div_left">
                 <div id="div_left_top">
                     <ul class=div_left_ul>
+                        <li class="div_left_li"><i class="fas fa-reply-all"></i>All (<span id="allID">0</span>)</li>
                         <li class="div_left_li"><i class="fas fa-calendar-day"></i>Today (<span id="todayID">0</span>)</li>
                         <li class="div_left_li"><i class="fas fa-calendar-alt"></i>Next  Days (<span id="nextdaysID">0</span>)</li>
                         <li class="div_left_li"><i class="fas fa-calendar-minus"></i>Weekend (<span id="weekendID">0</span>)</li>
                         <li class="div_left_li"><i class="fas fa-exclamation-triangle"></i>Important (<span id="importantID">0</span>)</li>
+                        <li class="div_left_li"><i class="fas fa-list-ul"></i>Usual (<span id="usualID">0</span>)</li>
                         <li class="div_left_li"><i class="fas fa-trash-alt"></i>Trash (<span id="trashID">0</span>)</li>
-                        <li class="div_left_li"><i class="fas fa-list-ul"></i>Done (<span id="doneID">0</span>)</li>
+                        <li class="div_left_li"><i class="far fa-check-square"></i>Done (<span id="doneID">0</span>)</li>
                         <li class="div_left_li"><i class="fab fa-ups"></i>Missed (<span id="missedID">0</span>)</li>
                         <li>
                             <details>
-                                <summary>Categoris</summary>
+                                <summary>Categories</summary>
                                 <ul class=div_left_ul>
                                     <li class="div_left_li">
                                         <i class="fas fa-user-cog"></i>Work(<span id="workID">0</span>)</li>
@@ -67,16 +69,16 @@
                 <div id="section_div_right">
                     <div class="div_right_top">
                         <fieldset id="important_fiel" class="top_fieldset">
-                            <legend>Important</legend>
-                            <div id="important_fiel_div">There is nothing to do</div>
+                            <legend id="important_legend">Important</legend>
+                            <div id="important_fiel_div"><p id="important_fiel_p">There is nothing to do</p></div>
 
 
                         </fieldset>
                     </div>
                     <div class="div_right_top">
                         <fieldset class="top_fieldset">
-                            <legend>Casual</legend>
-                            <div id="casual_fiel_div">There is nothing to do </div>
+                            <legend id="usual_legend">Usual</legend>
+                            <div id="usual_fiel_div"><p id="usual_fiel_p">There is nothing to do</p> </div>
 
                         </fieldset>
                     </div>
