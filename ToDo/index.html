@@ -20,21 +20,21 @@
             <div class="section_div section_div_left">
                 <div id="div_left_top">
                     <ul class=div_left_ul>
-                        <li class="div_left_li"><i class="fas fa-calendar-day"></i>Today (<span id="today"></span>)</li>
-                        <li class="div_left_li"><i class="fas fa-calendar-alt"></i>Next 7 Days (<span>100</span>)</li>
-                        <li class="div_left_li"><i class="fas fa-calendar-minus"></i>Weekend (<span>100</span>)</li>
-                        <li class="div_left_li"><i class="fas fa-exclamation-triangle"></i>Important (<span>100</span>)</li>
-                        <li class="div_left_li"><i class="fas fa-trash-alt"></i>Trash (<span>100</span>)</li>
-                        <li class="div_left_li"><i class="fas fa-list-ul"></i>Done (<span>100</span>)</li>
-                        <li class="div_left_li"><i class="fab fa-ups"></i>Missed (<span>100</span>)</li>
+                        <li class="div_left_li"><i class="fas fa-calendar-day"></i>Today (<span id="todayID">0</span>)</li>
+                        <li class="div_left_li"><i class="fas fa-calendar-alt"></i>Next 7 Days (<span id="nextdaysID">0</span>)</li>
+                        <li class="div_left_li"><i class="fas fa-calendar-minus"></i>Weekend (<span id="weekendID">0</span>)</li>
+                        <li class="div_left_li"><i class="fas fa-exclamation-triangle"></i>Important (<span id="importantID">0</span>)</li>
+                        <li class="div_left_li"><i class="fas fa-trash-alt"></i>Trash (<span id="trashID">0</span>)</li>
+                        <li class="div_left_li"><i class="fas fa-list-ul"></i>Done (<span id="doneID">0</span>)</li>
+                        <li class="div_left_li"><i class="fab fa-ups"></i>Missed (<span id="missedID">0</span>)</li>
                         <li>
                             <details>
                                 <summary>Categoris</summary>
                                 <ul class=div_left_ul>
                                     <li class="div_left_li">
-                                        <i class="fas fa-user-cog"></i>Work(<span>100</span>)</li>
-                                    <li class="div_left_li"><i class="fas fa-user-check"></i>Personal (<span>100</span>)</li>
-                                    <li class="div_left_li"><i class="fas fa-wind"></i>Other (<span>100</span>)</li>
+                                        <i class="fas fa-user-cog"></i>Work(<span id="workID">0</span>)</li>
+                                    <li class="div_left_li"><i class="fas fa-user-check"></i>Personal (<span id="personalID">0</span>)</li>
+                                    <li class="div_left_li"><i class="fas fa-wind"></i>Other (<span id="otherID">0</span>)</li>
                                 </ul>
                             </details>
                         </li>
@@ -68,13 +68,7 @@
                     <div class="div_right_top">
                         <fieldset id="important_fiel" class="top_fieldset">
                             <legend>Important</legend>
-                            <div id="important_fiel_div"> bobobo
-                            <div class="top_fieldset_div bg_color">
-                                <div class="div_left"><i class="far fa-circle"></i></div>
-                                <div class="div_mid overline">cccdfd fgccfdg ccdfdccc cc ccc1 cccdfd fgccfdg ccdfdccc cc ccc1 cccdfd fgccfdg ccdfdccc cc ccc1 cccdfd fgccfdg ccdfdccc cc ccc1 cccdfd fgccfdg ccdfdccc cc ccc1</div>
-                                <div class="div_right"><i class="far fa-edit"></i><i class="far fa-trash-alt"></i></div>
-                            </div>
-                            </div>
+                            <div id="important_fiel_div">There is nothing to do</div>
 
 
                         </fieldset>
@@ -82,25 +76,23 @@
                     <div class="div_right_top">
                         <fieldset class="top_fieldset">
                             <legend>Casual</legend>
-                            <div id="casual_fiel_div"> bobobo
-                            <div class="top_fieldset_div bg_color">
-                                <div class="div_left"><i class="far fa-circle"></i></div>
-                                <div class="div_mid overline">cccdfd fgccfdg ccdfdccc cc ccc1 cccdfd fgccfdg ccdfdccc cc ccc1 cccdfd fgccfdg ccdfdccc cc ccc1 cccdfd fgccfdg ccdfdccc cc ccc1 cccdfd fgccfdg ccdfdccc cc ccc1</div>
-                                <div class="div_right"><i class="far fa-edit"></i><i class="far fa-trash-alt"></i></div>
-                            </div>
-                            </div>
+                            <div id="casual_fiel_div">There is nothing to do </div>
 
                         </fieldset>
                     </div>
 
                 </div>
-                <button id="btn"><i class="fas fa-plus"></i>Add tasks</button>
+           
                 <button id="btn1"><i class="fas fa-plus"></i>Add tasks</button>
-                <input id="input" />
+           
 
             </div>
         </section>
-        <footer id="footer">adasd</footer>
+        <footer id="footer">
+        <div>
+            <p>Written and coded by <span>Vigen Tarkhanyan</span></p>
+        </div>
+        </footer>
     </main>
 
 </body>
