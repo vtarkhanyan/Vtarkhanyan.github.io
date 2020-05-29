@@ -114,7 +114,7 @@ summary::-webkit-details-marker {
     border-top: 2px solid;
     border-bottom: 2px solid;
     display: grid;
-    grid-template-rows: 2fr 20fr 1fr;
+    grid-template-rows: 0.5fr 3fr 0.5fr;
          text-align: center;
     font-size: 18px;
     padding-top: 20px; 
@@ -126,11 +126,13 @@ summary::-webkit-details-marker {
     text-align: center;
     font-family: cursive;
     font-size: 25px;
+    
 }
 
 .top_fieldset {
     padding: 0 0px 0 20;
     margin-bottom: 20;
+   
 
 }
 
