@@ -81,6 +81,7 @@
 .div_left_li {
     padding-left: 8px;
     border-bottom: 1px solid;
+    cursor: pointer;
 
 }
 
@@ -105,29 +106,41 @@ summary:focus {
 summary::-webkit-details-marker {
     font-size: 15px;
     color:blueviolet
+      
 
 }
 
-.section_div_rightf {
-    text-align: center;
+.section_div_right {
+    border-top: 2px solid;
+    border-bottom: 2px solid;
+    display: grid;
+    grid-template-rows: 2fr 20fr 1fr;
+         text-align: center;
+    font-size: 18px;
+    padding-top: 20px; 
+    align-items:center;
+    
 }
 
 #name_data {
     text-align: center;
+    font-family: cursive;
     font-size: 25px;
 }
 
 .top_fieldset {
     padding: 0 0px 0 20;
-    margin-bottom: 20
+    margin-bottom: 20;
+
 }
 
 .top_fieldset_div {
     display: grid;
-    grid-template-columns: 24px auto 140px;
+    grid-template-columns: 24px auto 135px;
     align-items: center;
     margin-bottom: 15px;
-    border: 2px solid red
+    border-bottom: 1px solid blue;
+    text-align: left
 }
 
 .div_mid {
@@ -135,21 +148,47 @@ summary::-webkit-details-marker {
 }
 
 .div_right {
-    text-align: end
+    text-align: end;
+    
 }
 
 .div_right * {
     padding-right: 7
 }
-
-#btn {
-
-    width: 195px;
-    height: 35px;
-    font-size: 30;
-    border-radius: 18px
+.div_right i[class*="fas"] {
+    font-size: 14
 }
 
+#btn {
+    display: inline-block;
+  padding: 15px 30px;
+  font-size: 24px;
+  cursor: pointer;
+  text-align: center;
+  outline: none;
+  color: #fff;
+  border: none;
+  border-radius: 15px;
+  box-shadow: 0 4px RGBA(120,94,251,0.5);
+ background-color: RGBA(63,94,251,0.5);
+    margin-bottom: 4px;
+}
+
+#btn:hover {
+    background-color: RGBA(63,94,251,0.6)
+}
+
+#btn:active {
+  background-color: RGBA(63,94,251,1);
+  box-shadow: 0 0px RGBA(63,94,251,0.6);
+  transform: translateY(3px);
+}
+
+
+
+#btn:focus {
+    outline: none;
+}
 .fa-plus {
     padding-right: 10px;
 
@@ -165,7 +204,7 @@ summary::-webkit-details-marker {
 }
 
 .bg_color {
-    background-color: azure;
+    background-color: RGBA(21,21,24,0.1);;
 }
 
 .div_right_top_add {
@@ -182,6 +221,8 @@ summary::-webkit-details-marker {
     margin-top: 20px;
     display: inline-block;
 }
+
+
 #footer {
     display: grid;
     justify-content: center;
