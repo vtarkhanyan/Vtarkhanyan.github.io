@@ -208,10 +208,14 @@ summary::-webkit-details-marker {
 }
 
 .div_right_top_add {
+    display: grid;
+    justify-content:center;
+    align-itemsx: center;
     margin-top: 20px;
-    border: 2px solid;
-    width: 100%;
-    text-align: center;
+   padding-rightx: 20px;
+    borderx: 2px solid;
+    widthx: 100%;
+    text-alignx: center;
 
     font-size: 22;
     border-radius: 8px
