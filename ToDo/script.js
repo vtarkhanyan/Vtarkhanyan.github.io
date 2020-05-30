@@ -145,7 +145,7 @@ function addText(value, icon, icontext, count) {
     }
 
     function trash(event) {
-         alert("Are you sure to remove the task?")
+         confirm("Are you sure to remove the task?")
         console.log(event.target.getAttribute("trash"))
 
         console.log(event.path[2])
@@ -176,7 +176,7 @@ function addText(value, icon, icontext, count) {
             event.target.style.fontSize = "19px"
             today[event.target.attributes.edit.nodeValue]["edit"] = true
             div2.contentEditable = true
-            div2.style.height = "30px"
+            div2.style.minHeight = "30px"
             div2.style.backgroundColor = "RGBA(63,94,251,0.7)"
             div2.style.color = "white";
         }
@@ -465,16 +465,18 @@ function bobo1() {
 
 let bobo2 = " ";
 
-
+let con
 
 function bobo() {
+    
     important_legend.textContent = "Important"
     usual_legend.textContent = "Usual"
     bobo2 = document.getElementById("dueto")
     if(time(bobo2.value)<date()){
        
     }else{
-          alert("Are you sure to create an expired task?");
+          con = confirm("Are you sure to create an expired task?");
+        console.log(confirm)
     }
     let bobo3 = document.getElementById("important");
     let bobo4 = document.getElementById("usual");
