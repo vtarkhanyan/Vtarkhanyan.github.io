@@ -25,18 +25,19 @@ function getDetaInfo() {
 }
 
 let fa_edit = ""
-let div_mid = ""
+let top_fieldset_div = ""
 let fa_trash_alt = ""
+let trash = ""
 let count = 0
 let id = 0
 
 const input = document.getElementById("input");
 const important_fiel_div = document.getElementById("important_fiel_div");
-
+const important_fiel_p = document.getElementById("important_fiel_p")
 const important_legend = document.getElementById("important_legend");
 const usual_legend = document.getElementById("usual_legend")
 const usual_fiel_div = document.getElementById("usual_fiel_div");
-
+const usual_fiel_p = document.getElementById("usual_fiel_p");
 let today = []
 let allID = document.getElementById("allID")
 let todayID = document.getElementById("todayID")
@@ -78,9 +79,11 @@ function addText(value, icon, icontext, count) {
     let attEdit = document.createAttribute("edit")
     let attTrash = document.createAttribute("trash")
     let div_mid_id = document.createAttribute("div_mid_id")
-
+    let top_fieldset_div_id = document.createAttribute("top_fieldset_div_id")
     att.value = "top_fieldset_div"
     div.setAttributeNode(att)
+    top_fieldset_div_id.value = count
+    div.setAttributeNode(top_fieldset_div_id)
     att1.value = "div_left"
     div1.setAttributeNode(att1)
     div.appendChild(div1)
@@ -125,37 +128,144 @@ function addText(value, icon, icontext, count) {
 
 
     function check(event) {
-        if (I.getAttribute("class") === "far fa-circle") {
+      if (I.getAttribute("class") === "fas fa-times") {
+                 
+         event.target.removeEventListener("click", check)
+     } else if (I.getAttribute("class") === "far fa-circle") {
+         
             att4.value = "fas fa-check"
             div2.classList.toggle("overline");
             div.classList.add("bg_color")
             today[event.target.id]["done"] = true
             doneID.textContent++
-            console.log(event.target.id)
+           
+           if(today[event.target.id]["date"] == date()){
+            todayID.textContent--
+          }
+             if(time(today[event.target.id]["date"]) > time(date())){
+            nextdaysID.textContent--
+          }
+             if(weekend(today[event.target.id]["date"]) ==0 || weekend(today[event.target.id]["date"]) == 6){
+            weekendID.textContent--
+          }
+             if(today[event.target.id]["importance"] == "important"){
+            importantID.textContent--
+          }
+            if(today[event.target.id]["importance"] == "usual"){
+            usualID.textContent--
+          }
+             if(time(today[event.target.id]["date"]) < time(date())){
+            missedID.textContent--
+          }
+             if(today[event.target.id]["categoris"] == "work"){
+            workID.textContent--
+          }
+            if(today[event.target.id]["categoris"] == "personal"){
+            personalID.textContent--
+          }
+            if(today[event.target.id]["categoris"] == "other"){
+            otherID.textContent--
+          }
+    
+           
+         
 
         } else {
+       
             att4.value = "far fa-circle"
             div2.classList.toggle("overline");
             div.classList.toggle("bg_color")
             today[event.target.id]["done"] = false
             doneID.textContent--
-            console.log(event.target.id)
+            if(today[event.target.id]["date"] == date()){
+            todayID.textContent++
+          }
+            if(time(today[event.target.id]["date"]) > time(date())){
+            nextdaysID.textContent++
+          }
+            if(weekend(today[event.target.id]["date"]) ==0 || weekend(today[event.target.id]["date"]) == 6){
+            weekendID.textContent++
+          }
+              if(today[event.target.id]["importance"] == "important"){
+            importantID.textContent++
+          }
+            if(today[event.target.id]["importance"] == "usual"){
+            usualID.textContent++
+          }
+            if(time(today[event.target.id]["date"]) < time(date())){
+            missedID.textContent++
+          }
+            if(today[event.target.id]["categoris"] == "work"){
+            workID.textContent++
+          }
+            if(today[event.target.id]["categoris"] == "personal"){
+            personalID.textContent++
+          }
+            if(today[event.target.id]["categoris"] == "other"){
+            otherID.textContent++
+          }
+                    
+     
         }
-
+     
     }
 
     function trash(event) {
-         confirm("Are you sure to remove the task?")
-        console.log(event.target.getAttribute("trash"))
-
-        console.log(event.path[2])
+         console.log(event)
+ 
+        
+        if(today[event.target.getAttribute("trash")]["trash"] == true){
+            confirm("Are you sure ?")
+            today[event.target.getAttribute("trash")]["display"] ="none"
+            let disable = document.createAttribute("class")
+             disable.value = "disable1"
+             event.path[2].setAttributeNode(disable)
+          //  event.path[2].style.backgroundColor = "red"
+          //  event.path[2].style.disable = "none"
+            trashID.textContent--
+            allID.textContent--
+           
+             
+            //top_fieldset_div[event.target.getAttribute("trash")].style.display = "none"
+        }else{
+            confirm("Are you sure to remove the task?")
         trashID.textContent++
         today[event.target.getAttribute("trash")]["trash"] = true
+             if(today[event.target.getAttribute("trash")]["done"] == true){
+               doneID.textContent--
+               }
         event.path[2].remove()
-
-
-
-    }
+          if(today[event.target.getAttribute("trash")]["date"] == date()){
+            todayID.textContent--
+          }
+        if(time(today[event.target.getAttribute("trash")]["date"]) > time(date())){
+            nextdaysID.textContent--
+          }
+            if(weekend(today[event.target.getAttribute("trash")]["date"]) ==0 || weekend(today[event.target.getAttribute("trash")]["date"]) == 6){
+            weekendID.textContent--
+          }
+              if(today[event.target.getAttribute("trash")]["importance"] == "important"){
+            importantID.textContent--
+          }
+            if(today[event.target.getAttribute("trash")]["importance"] == "usual"){
+            usualID.textContent--
+          }
+            if(time(today[event.target.getAttribute("trash")]["date"]) < time(date())){
+            missedID.textContent--
+          }
+            if(today[event.target.getAttribute("trash")]["categoris"] == "work"){
+            workID.textContent--
+          }
+            if(today[event.target.getAttribute("trash")]["categoris"] == "personal"){
+            personalID.textContent--
+          }
+            if(today[event.target.getAttribute("trash")]["categoris"] == "other"){
+            otherID.textContent--
+          }
+            
+        }
+        
+      }
 
     function edit(event) {
 
@@ -262,8 +372,8 @@ function addTask(value) {
     let label5 = document.createElement("label");
     label5.textContent = " Category: ";
     div.appendChild(label5)
-    
-    
+
+
     let input3 = document.createElement("input");
     let att16 = document.createAttribute("type")
     let att17 = document.createAttribute("id");
@@ -279,10 +389,10 @@ function addTask(value) {
     input3.setAttributeNode(att18);
     input3.setAttributeNode(att19);
     label5.appendChild(input3);
-     let label4 = document.createElement("label");
+    let label4 = document.createElement("label");
     label4.textContent = " Work ";
     label5.appendChild(label4)
-    
+
     let input4 = document.createElement("input");
     let att20 = document.createAttribute("type")
     let att21 = document.createAttribute("id");
@@ -300,11 +410,11 @@ function addTask(value) {
     input4.setAttributeNode(att23);
     input4.setAttributeNode(att29);
     label5.appendChild(input4);
-let label6 = document.createElement("label");
+    let label6 = document.createElement("label");
     label6.textContent = " Personal ";
     label5.appendChild(label6)
-    
-    
+
+
     let input5 = document.createElement("input");
     let att24 = document.createAttribute("type")
     let att25 = document.createAttribute("id");
@@ -320,7 +430,7 @@ let label6 = document.createElement("label");
     input5.setAttributeNode(att26);
     input5.setAttributeNode(att27);
     label5.appendChild(input5);
-let label7 = document.createElement("label");
+    let label7 = document.createElement("label");
     label7.textContent = " Other ";
     label5.appendChild(label7)
 
@@ -374,21 +484,21 @@ let label7 = document.createElement("label");
     attBtnID.value = "btn"
     attonclick.value = "bobo()"
     btn.setAttributeNode(attBtnID);
-     btn.setAttributeNode(attonclick);
+    btn.setAttributeNode(attonclick);
     btn.textContent = "Add tasks";
-   
+
     div.appendChild(btn)
-     btn.addEventListener("click", bobo);
+    btn.addEventListener("click", bobo);
     return div
     // <button id="btn1"><i class="fas fa-plus"></i>Add tasks</button>
 }
 
 
-/*function editTrash(){
-    
-            fa_edit=Array.from(document.querySelectorAll(".fa-edit"))
-        fa_edit.sort((a,b)=> a.attributes.edit.nodeValue-b.attributes.edit.nodeValue)
-         div_mid=Array.from(document.querySelectorAll(".div_mid"))
+function editTrash() {
+
+    top_fieldset_div = Array.from(document.querySelectorAll(".top_fieldset_div"))
+    top_fieldset_div.sort((a, b) => a.attributes.top_fieldset_div_id.nodeValue - b.attributes.top_fieldset_div_id.nodeValue)
+    /* div_mid=Array.from(document.querySelectorAll(".div_mid"))
         div_mid.sort((a,b)=> a.attributes.div_mid_id.nodeValue-b.attributes.div_mid_id.nodeValue)
     
     /*    fa_trash_alt =document.querySelectorAll(".trash")
@@ -404,44 +514,44 @@ let label7 = document.createElement("label");
             fa_trash_alt[i].addEventListener("click", trash)
         }*/
 
-/*   function edit(event) {
+    /*   function edit(event) {
 
-            console.log(event.target.getAttribute("edit"))
-             console.log(event.target)
+                console.log(event.target.getAttribute("edit"))
+                 console.log(event.target)
 
-            if (div_mid[event.target.getAttribute("edit")].contentEditable == "false") {
-                div_mid[event.target.getAttribute("edit")].contentEditable = "true"
-                event.target.style.color = "red";
-                event.target.style.fontSize = "19px"
-                div_mid[event.target.getAttribute("edit")].style.height = "30px"
-                div_mid[event.target.getAttribute("edit")].style.backgroundColor = "cornsilk"
-                div_mid[event.target.getAttribute("edit")].style.color = "red";
+                if (div_mid[event.target.getAttribute("edit")].contentEditable == "false") {
+                    div_mid[event.target.getAttribute("edit")].contentEditable = "true"
+                    event.target.style.color = "red";
+                    event.target.style.fontSize = "19px"
+                    div_mid[event.target.getAttribute("edit")].style.height = "30px"
+                    div_mid[event.target.getAttribute("edit")].style.backgroundColor = "cornsilk"
+                    div_mid[event.target.getAttribute("edit")].style.color = "red";
 
-            } else {
-                div_mid[event.target.getAttribute("edit")].contentEditable = "false"
-                event.target.style.color = "black";
-                event.target.style.fontSize = "16px"
-                div_mid[event.target.getAttribute("edit")].style.height = "auto"
-                div_mid[event.target.getAttribute("edit")].style.backgroundColor = "burlywood"
-                div_mid[event.target.getAttribute("edit")].style.color = "black";
-                today[event.target.getAttribute("edit")]["text"] = div_mid[event.target.getAttribute("edit")].textContent
+                } else {
+                    div_mid[event.target.getAttribute("edit")].contentEditable = "false"
+                    event.target.style.color = "black";
+                    event.target.style.fontSize = "16px"
+                    div_mid[event.target.getAttribute("edit")].style.height = "auto"
+                    div_mid[event.target.getAttribute("edit")].style.backgroundColor = "burlywood"
+                    div_mid[event.target.getAttribute("edit")].style.color = "black";
+                    today[event.target.getAttribute("edit")]["text"] = div_mid[event.target.getAttribute("edit")].textContent
+                }
+
+
             }
+              /*     function trash(event) {
+
+                console.log(event.target.getAttribute("trash"))
+                   
+            console.log(event.path[2])
+                trashID.textContent++
+                   today[event.target.getAttribute("trash")]["trash"] = true    
+                     event.path[2].remove()
+         
 
 
-        }
-          /*     function trash(event) {
-
-            console.log(event.target.getAttribute("trash"))
-               
-        console.log(event.path[2])
-            trashID.textContent++
-               today[event.target.getAttribute("trash")]["trash"] = true    
-                 event.path[2].remove()
-     
-
-
-        }
-}*/
+            }*/
+}
 
 
 let section_div_right = document.getElementById("section_div_right")
@@ -453,6 +563,8 @@ function bobo1() {
     usual_legend.textContent = ""
     important_fiel_div.innerHTML = addTask().outerHTML
     usual_fiel_div.innerHTML = ""
+    usual_fiel_p.innerHTML = ""
+    important_fiel_p.innerHTML = ""
     addTask()
 
 }
@@ -468,16 +580,11 @@ let bobo2 = " ";
 let con
 
 function bobo() {
-    
+
     important_legend.textContent = "Important"
     usual_legend.textContent = "Usual"
     bobo2 = document.getElementById("dueto")
-    if(time(bobo2.value)<date()){
-       
-    }else{
-          con = confirm("Are you sure to create an expired task?");
-        console.log(confirm)
-    }
+
     let bobo3 = document.getElementById("important");
     let bobo4 = document.getElementById("usual");
     let bobo5 = document.getElementById("work");
@@ -517,34 +624,36 @@ function bobo() {
 
         today.push(obj)
         id++
-        allID.textContent = today.length
+        allID.textContent = today.filter(function (x) {
+            return x.display !== "none" 
+        }).length
         todayID.textContent = today.filter(function (x) {
-            return x.date == date() && x.done == false && x.trash == false
+            return x.date == date() && x.done == false && x.trash == false 
         }).length
         nextdaysID.textContent = today.filter(function (x) {
             return x.date != date() && x.done == false && x.trash == false && time(x.date) > time(date())
         }).length
         weekendID.textContent = today.filter(function (x) {
-            return (weekend(x.date) == 0 || weekend(x.date) == 6)  && x.done == false && x.trash == false
+            return (weekend(x.date) == 0 || weekend(x.date) == 6) && x.done == false && x.trash == false
         }).length
         importantID.textContent = today.filter(function (x) {
-            return x.importance == "important"  && x.done == false && x.trash == false
+            return x.importance == "important" && x.done == false && x.trash == false
         }).length
         usualID.textContent = today.filter(function (x) {
             return x.importance == "usual" && x.done == false && x.trash == false
         }).length
 
         missedID.textContent = today.filter(function (x) {
-            return day(x.date) < day1()  && x.done == false && x.trash == false
+            return time(x.date) < time(date()) && x.done == false && x.trash == false
         }).length
         workID.textContent = today.filter(function (x) {
-            return x.categoris == "work"  && x.done == false && x.trash == false
+            return x.categoris == "work" && x.done == false && x.trash == false
         }).length
         personalID.textContent = today.filter(function (x) {
-            return x.categoris == "personal"  && x.done == false && x.trash == false
+            return x.categoris == "personal" && x.done == false && x.trash == false
         }).length
         otherID.textContent = today.filter(function (x) {
-            return x.categoris == "other"  && x.done == false && x.trash == false
+            return x.categoris == "other" && x.done == false && x.trash == false
         }).length
 
 
@@ -561,11 +670,12 @@ function bobo() {
 
             }
             if (today[i]["done"] == false && today[i]["trash"] == false) {
+
                 if (today[i]["importance"] == "important") {
-                 
+                    important_fiel_p.textContent = " "
                     important_fiel_div.append(addText(today[i]["text"], icon, " " + today[i]["categoris"], today[i]["id"]))
                 } else {
-             
+                    usual_fiel_p.textContent = " "
                     usual_fiel_div.append(addText(today[i]["text"], icon, " " + today[i]["categoris"], today[i]["id"]))
                 }
             }
@@ -590,12 +700,12 @@ for (let i = 0; i < div_left_li.length; i++) {
 function chenge(event) {
 
     let str = event.target.innerText
-    
+
 
     function filter(bool) {
         for (let i = 0; i < today.length; i++) {
             let icon;
-          
+
             if (today[i]["categoris"] == "work") {
                 icon = "fas fa-user-cog"
             } else if (today[i]["categoris"] == "personal") {
@@ -609,7 +719,7 @@ function chenge(event) {
             if (bool(i) && today[i]["done"] == false && today[i]["trash"] == false) {
 
                 if (today[i]["importance"] == "important") {
-              
+
                     important_fiel_div.append(addText(today[i]["text"], icon, " " + today[i]["categoris"], today[i]["id"]))
                 } else {
                     usual_fiel_div.append(addText(today[i]["text"], icon, " " + today[i]["categoris"], today[i]["id"]))
@@ -619,10 +729,11 @@ function chenge(event) {
 
 
     }
+
     function filterALL(bool) {
         for (let i = 0; i < today.length; i++) {
             let icon;
-          
+
             if (today[i]["categoris"] == "work") {
                 icon = "fas fa-user-cog"
             } else if (today[i]["categoris"] == "personal") {
@@ -633,23 +744,52 @@ function chenge(event) {
             }
 
 
-            if (bool(i)) {
+            if (bool(i) ) {
 
                 if (today[i]["importance"] == "important") {
-              
+
                     important_fiel_div.append(addText(today[i]["text"], icon, " " + today[i]["categoris"], today[i]["id"]))
+
+
                 } else {
                     usual_fiel_div.append(addText(today[i]["text"], icon, " " + today[i]["categoris"], today[i]["id"]))
+
                 }
+                top_fieldset_div = Array.from(document.querySelectorAll(".top_fieldset_div"))
+                top_fieldset_div.sort((a, b) => a.attributes.top_fieldset_div_id.nodeValue - b.attributes.top_fieldset_div_id.nodeValue)
+
+                if (today[i].done == true) {
+                    top_fieldset_div[i].classList.add("bg_color")
+                    top_fieldset_div[i].firstElementChild.firstElementChild.setAttribute("class", "fas fa-check")
+                    top_fieldset_div[i].childNodes[1].classList.add("overline")
+
+
+
+                }
+                if (today[i].trash == true) {
+                    top_fieldset_div[i].classList.add("bg_color")
+                    top_fieldset_div[i].firstElementChild.firstElementChild.setAttribute("class", "fas fa-times")
+                    top_fieldset_div[i].childNodes[1].classList.add("overline")
+
+
+
+                }
+                if (today[i].display == "none") {
+                    top_fieldset_div[i].style.display ="none"
+                  
+                }
+
+
             }
         }
 
 
     }
-        function filterTrash(bool) {
+
+    function filterTrash(bool) {
         for (let i = 0; i < today.length; i++) {
             let icon;
-          
+
             if (today[i]["categoris"] == "work") {
                 icon = "fas fa-user-cog"
             } else if (today[i]["categoris"] == "personal") {
@@ -660,24 +800,39 @@ function chenge(event) {
             }
 
 
-            if (bool(i)) {
+            if (bool(i) && today[i]["display"] !== "none") {
 
                 if (today[i]["importance"] == "important") {
-              
+
                     important_fiel_div.append(addText(today[i]["text"], icon, " " + today[i]["categoris"], today[i]["id"]))
                 } else {
                     usual_fiel_div.append(addText(today[i]["text"], icon, " " + today[i]["categoris"], today[i]["id"]))
                 }
+                let xyz = document.getElementsByClassName("top_fieldset_div")
+                for (let k = 0; k < xyz.length; k++) {
+                    xyz[k].classList.add("bg_color")
+                    xyz[k].firstElementChild.firstElementChild.setAttribute("class", "fas fa-times")
+                    
+                    xyz[k].childNodes[1].classList.add("overline")
+                    
+                    console.log(xyz)
+                }
+
+
             }
+
+
+
+            //trash[0].addEventListener("click", "trash1")
         }
 
 
-    }       
-    
+    }
+
     function filterDone(bool) {
         for (let i = 0; i < today.length; i++) {
             let icon;
-          
+
             if (today[i]["categoris"] == "work") {
                 icon = "fas fa-user-cog"
             } else if (today[i]["categoris"] == "personal") {
@@ -691,20 +846,32 @@ function chenge(event) {
             if (bool(i)) {
 
                 if (today[i]["importance"] == "important") {
-              
+
                     important_fiel_div.append(addText(today[i]["text"], icon, " " + today[i]["categoris"], today[i]["id"]))
                 } else {
                     usual_fiel_div.append(addText(today[i]["text"], icon, " " + today[i]["categoris"], today[i]["id"]))
                 }
+                let xy = document.getElementsByClassName("top_fieldset_div")
+                for (let j = 0; j < xy.length; j++) {
+                    xy[j].classList.add("bg_color")
+                    xy[j].firstElementChild.firstElementChild.setAttribute("class", "fas fa-check")
+                    xy[j].childNodes[1].classList.add("overline")
+
+                }
+
+
             }
         }
 
 
     }
+
+
 
     if (str.startsWith("All")) {
         important_fiel_div.innerHTML = " "
         usual_fiel_div.innerHTML = " "
+
         filterALL(function bool(i) {
 
             return today[i]
@@ -762,22 +929,22 @@ function chenge(event) {
             return time(today[i]["date"]) < time(date())
         })
     }
-    if(str.startsWith("Trash")){
-       important_fiel_div.innerHTML = ""
+    if (str.startsWith("Trash")) {
+        important_fiel_div.innerHTML = ""
         usual_fiel_div.innerHTML = ""
-        filterTrash(function bool(i){
-       console.log(today[i]["trash"])
-       return today[i]["trash"] == true
-       })  
-       }
-    if(str.startsWith("Done")){
-       important_fiel_div.innerHTML = ""
+        filterTrash(function bool(i) {
+
+            return today[i]["trash"] == true
+        })
+    }
+    if (str.startsWith("Done")) {
+        important_fiel_div.innerHTML = ""
         usual_fiel_div.innerHTML = ""
-       filterDone(  function bool(i){
-       
-       return today[i]["done"]==true
-       })  
-       }
+        filterDone(function bool(i) {
+
+            return today[i]["done"] == true && today[i]["trash"] == false
+        })
+    }
     if (str.startsWith("Work")) {
         important_fiel_div.innerHTML = " "
         usual_fiel_div.innerHTML = " "
@@ -812,9 +979,20 @@ function date() {
     let n = d.getDate();
     n1 += 1
 
+    if (Math.floor(n1 / 10) > 0) {
+        n1 = n1
+    } else {
 
+        n1 = "0" + n1
+    }
+    if (Math.floor(n / 10) > 0) {
+        n = n
+    } else {
 
-    return n2 + "-0" + n1 + "-" + n;
+        n = "0" + n
+    }
+
+    return n2 + "-" + n1 + "-" + n;
 
 }
 
