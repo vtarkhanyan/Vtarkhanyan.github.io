@@ -2,7 +2,6 @@ let weekDay = ["Sunday", "Monday", "Tuesday", "Wednesday", "Thursday", "Friday",
 let monthName = ["January", "February", "March", "April", "May", "June", "July", "August", "September", "October", "November", "December"]
 let div_left_li = document.querySelectorAll(".div_left_li");
 
-
 function data(name) {
     let a = new Date()
     let day = a.getDate()
@@ -15,7 +14,6 @@ function data(name) {
 
 data("Today")
 
-
 for (let i = 0; i < div_left_li.length; i++) {
     div_left_li[i].addEventListener("click", getDetaInfo)
 }
@@ -23,14 +21,15 @@ for (let i = 0; i < div_left_li.length; i++) {
 function getDetaInfo() {
     data(this.innerText)
 }
-
-let fa_edit = ""
-let top_fieldset_div = ""
-let fa_trash_alt = ""
-let trash = ""
-let count = 0
-let id = 0
-
+let fa_edit = "";
+let top_fieldset_div = "";
+let fa_trash_alt = "";
+let trash = "";
+let count = 0;
+let id = 0;
+let textarea1 = "";
+let dueto = " ";
+let con
 const input = document.getElementById("input");
 const important_fiel_div = document.getElementById("important_fiel_div");
 const important_fiel_p = document.getElementById("important_fiel_p")
@@ -52,10 +51,7 @@ let workID = document.getElementById("workID");
 let personalID = document.getElementById("personalID");
 let otherID = document.getElementById("otherID");
 
-
-
 function addText(value, icon, icontext, count) {
-
     let div = document.createElement("div");
     let att = document.createAttribute("class")
     let div1 = document.createElement("div");
@@ -110,10 +106,8 @@ function addText(value, icon, icontext, count) {
     div1.appendChild(I)
     div2.innerText = value
     I3.setAttributeNode(att10)
-
     div3.appendChild(I3)
     I3.textContent = icontext
-
     I1.setAttributeNode(attEdit)
     att5.value = "far fa-edit"
     I1.setAttributeNode(att5)
@@ -126,151 +120,141 @@ function addText(value, icon, icontext, count) {
     I2.addEventListener("click", trash)
     div3.appendChild(I2)
 
-
     function check(event) {
-      if (I.getAttribute("class") === "fas fa-times") {
-                 
-         event.target.removeEventListener("click", check)
-     } else if (I.getAttribute("class") === "far fa-circle") {
-         
+        if (I.getAttribute("class") === "fas fa-times") {
+
+            event.target.removeEventListener("click", check)
+        } else if (I.getAttribute("class") === "far fa-circle") {
+
             att4.value = "fas fa-check"
             div2.classList.toggle("overline");
             div.classList.add("bg_color")
             today[event.target.id]["done"] = true
             doneID.textContent++
-           
-           if(today[event.target.id]["date"] == date()){
-            todayID.textContent--
-          }
-             if(time(today[event.target.id]["date"]) > time(date())){
-            nextdaysID.textContent--
-          }
-             if(weekend(today[event.target.id]["date"]) ==0 || weekend(today[event.target.id]["date"]) == 6){
-            weekendID.textContent--
-          }
-             if(today[event.target.id]["importance"] == "important"){
-            importantID.textContent--
-          }
-            if(today[event.target.id]["importance"] == "usual"){
-            usualID.textContent--
-          }
-             if(time(today[event.target.id]["date"]) < time(date())){
-            missedID.textContent--
-          }
-             if(today[event.target.id]["categoris"] == "work"){
-            workID.textContent--
-          }
-            if(today[event.target.id]["categoris"] == "personal"){
-            personalID.textContent--
-          }
-            if(today[event.target.id]["categoris"] == "other"){
-            otherID.textContent--
-          }
-    
-           
-         
+
+            if (today[event.target.id]["date"] == date()) {
+                todayID.textContent--
+            }
+            if (time(today[event.target.id]["date"]) > time(date())) {
+                nextdaysID.textContent--
+            }
+            if (weekend(today[event.target.id]["date"]) == 0 || weekend(today[event.target.id]["date"]) == 6) {
+                weekendID.textContent--
+            }
+            if (today[event.target.id]["importance"] == "important") {
+                importantID.textContent--
+            }
+            if (today[event.target.id]["importance"] == "usual") {
+                usualID.textContent--
+            }
+            if (time(today[event.target.id]["date"]) < time(date())) {
+                missedID.textContent--
+            }
+            if (today[event.target.id]["categoris"] == "work") {
+                workID.textContent--
+            }
+            if (today[event.target.id]["categoris"] == "personal") {
+                personalID.textContent--
+            }
+            if (today[event.target.id]["categoris"] == "other") {
+                otherID.textContent--
+            }
 
         } else {
-       
+
             att4.value = "far fa-circle"
             div2.classList.toggle("overline");
             div.classList.toggle("bg_color")
             today[event.target.id]["done"] = false
             doneID.textContent--
-            if(today[event.target.id]["date"] == date()){
-            todayID.textContent++
-          }
-            if(time(today[event.target.id]["date"]) > time(date())){
-            nextdaysID.textContent++
-          }
-            if(weekend(today[event.target.id]["date"]) ==0 || weekend(today[event.target.id]["date"]) == 6){
-            weekendID.textContent++
-          }
-              if(today[event.target.id]["importance"] == "important"){
-            importantID.textContent++
-          }
-            if(today[event.target.id]["importance"] == "usual"){
-            usualID.textContent++
-          }
-            if(time(today[event.target.id]["date"]) < time(date())){
-            missedID.textContent++
-          }
-            if(today[event.target.id]["categoris"] == "work"){
-            workID.textContent++
-          }
-            if(today[event.target.id]["categoris"] == "personal"){
-            personalID.textContent++
-          }
-            if(today[event.target.id]["categoris"] == "other"){
-            otherID.textContent++
-          }
-                    
-     
+            if (today[event.target.id]["date"] == date()) {
+                todayID.textContent++
+            }
+            if (time(today[event.target.id]["date"]) > time(date())) {
+                nextdaysID.textContent++
+            }
+            if (weekend(today[event.target.id]["date"]) == 0 || weekend(today[event.target.id]["date"]) == 6) {
+                weekendID.textContent++
+            }
+            if (today[event.target.id]["importance"] == "important") {
+                importantID.textContent++
+            }
+            if (today[event.target.id]["importance"] == "usual") {
+                usualID.textContent++
+            }
+            if (time(today[event.target.id]["date"]) < time(date())) {
+                missedID.textContent++
+            }
+            if (today[event.target.id]["categoris"] == "work") {
+                workID.textContent++
+            }
+            if (today[event.target.id]["categoris"] == "personal") {
+                personalID.textContent++
+            }
+            if (today[event.target.id]["categoris"] == "other") {
+                otherID.textContent++
+            }
+
+
         }
-     
+
     }
 
     function trash(event) {
-         console.log(event)
- 
-        
-        if(today[event.target.getAttribute("trash")]["trash"] == true){
-            confirm("Are you sure ?")
-            today[event.target.getAttribute("trash")]["display"] ="none"
+        if (today[event.target.getAttribute("trash")]["trash"] == true) {
+            confirm("Are you sure to remove the task at all?")
+            today[event.target.getAttribute("trash")]["display"] = "none"
             let disable = document.createAttribute("class")
-             disable.value = "disable1"
-             event.path[2].setAttributeNode(disable)
-          //  event.path[2].style.backgroundColor = "red"
-          //  event.path[2].style.disable = "none"
+            disable.value = "disable1"
+            event.path[2].setAttributeNode(disable)
             trashID.textContent--
             allID.textContent--
-           
-             
-            //top_fieldset_div[event.target.getAttribute("trash")].style.display = "none"
-        }else{
+
+        } else {
             confirm("Are you sure to remove the task?")
-        trashID.textContent++
-        today[event.target.getAttribute("trash")]["trash"] = true
-             if(today[event.target.getAttribute("trash")]["done"] == true){
-               doneID.textContent--
-               }
-        event.path[2].remove()
-          if(today[event.target.getAttribute("trash")]["date"] == date()){
-            todayID.textContent--
-          }
-        if(time(today[event.target.getAttribute("trash")]["date"]) > time(date())){
-            nextdaysID.textContent--
-          }
-            if(weekend(today[event.target.getAttribute("trash")]["date"]) ==0 || weekend(today[event.target.getAttribute("trash")]["date"]) == 6){
-            weekendID.textContent--
-          }
-              if(today[event.target.getAttribute("trash")]["importance"] == "important"){
-            importantID.textContent--
-          }
-            if(today[event.target.getAttribute("trash")]["importance"] == "usual"){
-            usualID.textContent--
-          }
-            if(time(today[event.target.getAttribute("trash")]["date"]) < time(date())){
-            missedID.textContent--
-          }
-            if(today[event.target.getAttribute("trash")]["categoris"] == "work"){
-            workID.textContent--
-          }
-            if(today[event.target.getAttribute("trash")]["categoris"] == "personal"){
-            personalID.textContent--
-          }
-            if(today[event.target.getAttribute("trash")]["categoris"] == "other"){
-            otherID.textContent--
-          }
-            
+            trashID.textContent++
+
+            today[event.target.getAttribute("trash")]["trash"] = true
+            if (today[event.target.getAttribute("trash")]["done"] == true) {
+                doneID.textContent--
+            }
+            event.path[2].remove()
+            if (today[event.target.getAttribute("trash")]["done"] == false) {
+
+                if (today[event.target.getAttribute("trash")]["date"] == date()) {
+                    todayID.textContent--
+                }
+                if (time(today[event.target.getAttribute("trash")]["date"]) > time(date())) {
+                    nextdaysID.textContent--
+                }
+                if (weekend(today[event.target.getAttribute("trash")]["date"]) == 0 || weekend(today[event.target.getAttribute("trash")]["date"]) == 6) {
+                    weekendID.textContent--
+                }
+                if (today[event.target.getAttribute("trash")]["importance"] == "important") {
+                    importantID.textContent--
+                }
+                if (today[event.target.getAttribute("trash")]["importance"] == "usual") {
+                    usualID.textContent--
+                }
+                if (time(today[event.target.getAttribute("trash")]["date"]) < time(date())) {
+                    missedID.textContent--
+                }
+                if (today[event.target.getAttribute("trash")]["categoris"] == "work") {
+                    workID.textContent--
+                }
+                if (today[event.target.getAttribute("trash")]["categoris"] == "personal") {
+                    personalID.textContent--
+                }
+                if (today[event.target.getAttribute("trash")]["categoris"] == "other") {
+                    otherID.textContent--
+                }
+            }
+
         }
-        
-      }
+
+    }
 
     function edit(event) {
-
-        console.log(div2)
-
         if (today[event.target.attributes.edit.nodeValue]["edit"]) {
             event.target.style.color = "black";
             event.target.style.fontSize = "16px"
@@ -291,34 +275,12 @@ function addText(value, icon, icontext, count) {
             div2.style.color = "white";
         }
 
-        /*if (div_mid[event.target.getAttribute("edit")].contentEditable == "false") {
-            div_mid[event.target.getAttribute("edit")].contentEditable = "true"
-            event.target.style.color = "red";
-            event.target.style.fontSize = "19px"
-            div_mid[event.target.getAttribute("edit")].style.height = "30px"
-            div_mid[event.target.getAttribute("edit")].style.backgroundColor = "cornsilk"
-            div_mid[event.target.getAttribute("edit")].style.color = "red";
-
-        } else {
-            div_mid[event.target.getAttribute("edit")].contentEditable = "false"
-            event.target.style.color = "black";
-            event.target.style.fontSize = "16px"
-            div_mid[event.target.getAttribute("edit")].style.height = "auto"
-            div_mid[event.target.getAttribute("edit")].style.backgroundColor = "burlywood"
-            div_mid[event.target.getAttribute("edit")].style.color = "black";
-            today[event.target.getAttribute("edit")]["text"] = div_mid[event.target.getAttribute("edit")].textContent
-        }*/
-
-
     }
     count++
-    //editTrash()
+
     return div
 
 }
-
-
-let textarea1 = ""
 
 function addTask(value) {
     let div = document.createElement("div");
@@ -328,7 +290,6 @@ function addTask(value) {
     att1.value = "getContent";
     div.setAttributeNode(att);
     div.setAttributeNode(att1);
-
     let label = document.createElement("label");
     label.textContent = " Importance: ";
     div.appendChild(label)
@@ -346,7 +307,6 @@ function addTask(value) {
     input.setAttributeNode(att4);
     input.setAttributeNode(att5);
     label.appendChild(input)
-
     let label1 = document.createElement("label");
     label1.textContent = " Important ";
     label.appendChild(label1)
@@ -360,7 +320,6 @@ function addTask(value) {
     att6.value = "usual"
     att15.value = "importance"
     att7.value = "usual"
-
     input1.setAttributeNode(att14);
     input1.setAttributeNode(att6);
     input1.setAttributeNode(att15);
@@ -372,8 +331,6 @@ function addTask(value) {
     let label5 = document.createElement("label");
     label5.textContent = " Category: ";
     div.appendChild(label5)
-
-
     let input3 = document.createElement("input");
     let att16 = document.createAttribute("type")
     let att17 = document.createAttribute("id");
@@ -383,7 +340,6 @@ function addTask(value) {
     att17.value = "work"
     att18.value = "categoris"
     att19.value = "work"
-
     input3.setAttributeNode(att16);
     input3.setAttributeNode(att17);
     input3.setAttributeNode(att18);
@@ -392,7 +348,6 @@ function addTask(value) {
     let label4 = document.createElement("label");
     label4.textContent = " Work ";
     label5.appendChild(label4)
-
     let input4 = document.createElement("input");
     let att20 = document.createAttribute("type")
     let att21 = document.createAttribute("id");
@@ -403,7 +358,6 @@ function addTask(value) {
     att21.value = "personal"
     att22.value = "categoris"
     att23.value = "personal"
-
     input4.setAttributeNode(att20);
     input4.setAttributeNode(att21);
     input4.setAttributeNode(att22);
@@ -413,8 +367,6 @@ function addTask(value) {
     let label6 = document.createElement("label");
     label6.textContent = " Personal ";
     label5.appendChild(label6)
-
-
     let input5 = document.createElement("input");
     let att24 = document.createAttribute("type")
     let att25 = document.createAttribute("id");
@@ -424,7 +376,6 @@ function addTask(value) {
     att25.value = "other";
     att26.value = "categoris";
     att27.value = "other";
-
     input5.setAttributeNode(att24);
     input5.setAttributeNode(att25);
     input5.setAttributeNode(att26);
@@ -433,9 +384,6 @@ function addTask(value) {
     let label7 = document.createElement("label");
     label7.textContent = " Other ";
     label5.appendChild(label7)
-
-
-
     let label2 = document.createElement("label");
     label2.textContent = " Usual ";
     label.appendChild(label2);
@@ -448,11 +396,9 @@ function addTask(value) {
     let att8 = document.createAttribute("type");
     let att9 = document.createAttribute("id");
     let att10 = document.createAttribute("name");
-
     att8.value = "date"
     att9.value = "dueto"
     att10.value = "dueto"
-
     input2.setAttributeNode(att8);
     input2.setAttributeNode(att9);
     input2.setAttributeNode(att10);
@@ -482,83 +428,21 @@ function addTask(value) {
     let attBtnID = document.createAttribute("id");
     let attonclick = document.createAttribute("onclick");
     attBtnID.value = "btn"
-    attonclick.value = "bobo()"
+    attonclick.value = "getTask()"
     btn.setAttributeNode(attBtnID);
     btn.setAttributeNode(attonclick);
     btn.textContent = "Add tasks";
-
     div.appendChild(btn)
-    btn.addEventListener("click", bobo);
+    btn.addEventListener("click", getTask);
     return div
-    // <button id="btn1"><i class="fas fa-plus"></i>Add tasks</button>
+
 }
-
-
-function editTrash() {
-
-    top_fieldset_div = Array.from(document.querySelectorAll(".top_fieldset_div"))
-    top_fieldset_div.sort((a, b) => a.attributes.top_fieldset_div_id.nodeValue - b.attributes.top_fieldset_div_id.nodeValue)
-    /* div_mid=Array.from(document.querySelectorAll(".div_mid"))
-        div_mid.sort((a,b)=> a.attributes.div_mid_id.nodeValue-b.attributes.div_mid_id.nodeValue)
-    
-    /*    fa_trash_alt =document.querySelectorAll(".trash")
-        for (let i = 0; i < div_mid.length; i++) {
-            div_mid[i].contentEditable = "false"
-         
-        }
- 
-        for (let i = 0; i < fa_edit.length; i++) {
-            fa_edit[i].addEventListener("click", edit)
-        }
-       /* for (let i = 0; i < fa_trash_alt.length; i++) {
-            fa_trash_alt[i].addEventListener("click", trash)
-        }*/
-
-    /*   function edit(event) {
-
-                console.log(event.target.getAttribute("edit"))
-                 console.log(event.target)
-
-                if (div_mid[event.target.getAttribute("edit")].contentEditable == "false") {
-                    div_mid[event.target.getAttribute("edit")].contentEditable = "true"
-                    event.target.style.color = "red";
-                    event.target.style.fontSize = "19px"
-                    div_mid[event.target.getAttribute("edit")].style.height = "30px"
-                    div_mid[event.target.getAttribute("edit")].style.backgroundColor = "cornsilk"
-                    div_mid[event.target.getAttribute("edit")].style.color = "red";
-
-                } else {
-                    div_mid[event.target.getAttribute("edit")].contentEditable = "false"
-                    event.target.style.color = "black";
-                    event.target.style.fontSize = "16px"
-                    div_mid[event.target.getAttribute("edit")].style.height = "auto"
-                    div_mid[event.target.getAttribute("edit")].style.backgroundColor = "burlywood"
-                    div_mid[event.target.getAttribute("edit")].style.color = "black";
-                    today[event.target.getAttribute("edit")]["text"] = div_mid[event.target.getAttribute("edit")].textContent
-                }
-
-
-            }
-              /*     function trash(event) {
-
-                console.log(event.target.getAttribute("trash"))
-                   
-            console.log(event.path[2])
-                trashID.textContent++
-                   today[event.target.getAttribute("trash")]["trash"] = true    
-                     event.path[2].remove()
-         
-
-
-            }*/
-}
-
 
 let section_div_right = document.getElementById("section_div_right")
 
-btn1.addEventListener("click", bobo1)
+btn1.addEventListener("click", legendText)
 
-function bobo1() {
+function legendText() {
     important_legend.textContent = "ADD NEW TASKS"
     usual_legend.textContent = ""
     important_fiel_div.innerHTML = addTask().outerHTML
@@ -569,55 +453,43 @@ function bobo1() {
 
 }
 
-
-
-
-
-
-
-let bobo2 = " ";
-
-let con
-
-function bobo() {
-
+function getTask() {
     important_legend.textContent = "Important"
     usual_legend.textContent = "Usual"
-    bobo2 = document.getElementById("dueto")
-
-    let bobo3 = document.getElementById("important");
-    let bobo4 = document.getElementById("usual");
-    let bobo5 = document.getElementById("work");
-    let bobo6 = document.getElementById("personal");
-    let bobo7 = document.getElementById("other");
+    dueto = document.getElementById("dueto")
+    let important = document.getElementById("important");
+    let usual = document.getElementById("usual");
+    let work = document.getElementById("work");
+    let personal = document.getElementById("personal");
+    let other = document.getElementById("other");
     let obj = {}
     obj["done"] = false;
     obj["trash"] = false;
     obj["edit"] = false;
     obj["id"] = id;
-    if (textarea1.value && bobo2.value !== "") {
+    if (textarea1.value && dueto.value !== "") {
 
 
 
         obj["text"] = textarea1.value;
-        if (bobo3.checked) {
-            obj["importance"] = bobo3.value;
+        if (important.checked) {
+            obj["importance"] = important.value;
 
         } else {
-            obj["importance"] = bobo4.value;
+            obj["importance"] = usual.value;
         }
 
-        obj["date"] = bobo2.value;
-        if (bobo5.checked) {
-            obj["categoris"] = bobo5.value;
+        obj["date"] = dueto.value;
+        if (work.checked) {
+            obj["categoris"] = work.value;
 
 
-        } else if (bobo6.checked) {
-            obj["categoris"] = bobo6.value;
+        } else if (personal.checked) {
+            obj["categoris"] = personal.value;
 
 
         } else {
-            obj["categoris"] = bobo7.value;
+            obj["categoris"] = other.value;
             icon = "fas fa-wind"
 
         }
@@ -625,10 +497,10 @@ function bobo() {
         today.push(obj)
         id++
         allID.textContent = today.filter(function (x) {
-            return x.display !== "none" 
+            return x.display !== "none"
         }).length
         todayID.textContent = today.filter(function (x) {
-            return x.date == date() && x.done == false && x.trash == false 
+            return x.date == date() && x.done == false && x.trash == false
         }).length
         nextdaysID.textContent = today.filter(function (x) {
             return x.date != date() && x.done == false && x.trash == false && time(x.date) > time(date())
@@ -689,18 +561,12 @@ function bobo() {
 
 }
 
-
-
-
-
 for (let i = 0; i < div_left_li.length; i++) {
     div_left_li[i].addEventListener("click", chenge)
 }
 
 function chenge(event) {
-
     let str = event.target.innerText
-
 
     function filter(bool) {
         for (let i = 0; i < today.length; i++) {
@@ -714,8 +580,6 @@ function chenge(event) {
                 icon = "fas fa-wind"
 
             }
-
-
             if (bool(i) && today[i]["done"] == false && today[i]["trash"] == false) {
 
                 if (today[i]["importance"] == "important") {
@@ -726,8 +590,6 @@ function chenge(event) {
                 }
             }
         }
-
-
     }
 
     function filterALL(bool) {
@@ -740,11 +602,8 @@ function chenge(event) {
                 icon = "fas fa-user-check"
             } else {
                 icon = "fas fa-wind"
-
             }
-
-
-            if (bool(i) ) {
+            if (bool(i)) {
 
                 if (today[i]["importance"] == "important") {
 
@@ -762,28 +621,18 @@ function chenge(event) {
                     top_fieldset_div[i].classList.add("bg_color")
                     top_fieldset_div[i].firstElementChild.firstElementChild.setAttribute("class", "fas fa-check")
                     top_fieldset_div[i].childNodes[1].classList.add("overline")
-
-
-
                 }
                 if (today[i].trash == true) {
                     top_fieldset_div[i].classList.add("bg_color")
                     top_fieldset_div[i].firstElementChild.firstElementChild.setAttribute("class", "fas fa-times")
-                    top_fieldset_div[i].childNodes[1].classList.add("overline")
-
-
-
+                    top_fieldset_div[i].childNodes[1].classList.add("overline1")
                 }
                 if (today[i].display == "none") {
-                    top_fieldset_div[i].style.display ="none"
-                  
+                    top_fieldset_div[i].style.display = "none"
+
                 }
-
-
             }
         }
-
-
     }
 
     function filterTrash(bool) {
@@ -812,21 +661,11 @@ function chenge(event) {
                 for (let k = 0; k < xyz.length; k++) {
                     xyz[k].classList.add("bg_color")
                     xyz[k].firstElementChild.firstElementChild.setAttribute("class", "fas fa-times")
-                    
-                    xyz[k].childNodes[1].classList.add("overline")
-                    
-                    console.log(xyz)
+
+                    xyz[k].childNodes[1].classList.add("overline1")
                 }
-
-
             }
-
-
-
-            //trash[0].addEventListener("click", "trash1")
         }
-
-
     }
 
     function filterDone(bool) {
@@ -839,61 +678,40 @@ function chenge(event) {
                 icon = "fas fa-user-check"
             } else {
                 icon = "fas fa-wind"
-
             }
-
-
             if (bool(i)) {
-
                 if (today[i]["importance"] == "important") {
-
                     important_fiel_div.append(addText(today[i]["text"], icon, " " + today[i]["categoris"], today[i]["id"]))
                 } else {
                     usual_fiel_div.append(addText(today[i]["text"], icon, " " + today[i]["categoris"], today[i]["id"]))
                 }
                 let xy = document.getElementsByClassName("top_fieldset_div")
                 for (let j = 0; j < xy.length; j++) {
-                    xy[j].classList.add("bg_color")
-                    xy[j].firstElementChild.firstElementChild.setAttribute("class", "fas fa-check")
+                    xy[j].classList.add("bg_color");                    xy[j].firstElementChild.firstElementChild.setAttribute("class", "fas fa-check")
                     xy[j].childNodes[1].classList.add("overline")
-
                 }
-
-
             }
         }
-
-
     }
-
-
 
     if (str.startsWith("All")) {
         important_fiel_div.innerHTML = " "
         usual_fiel_div.innerHTML = " "
-
         filterALL(function bool(i) {
-
             return today[i]
         })
-
-
     }
     if (str.startsWith("Today")) {
         important_fiel_div.innerHTML = " "
         usual_fiel_div.innerHTML = " "
         filter(function bool(i) {
-
             return today[i]["date"] == date()
         })
-
-
     }
     if (str.startsWith("Next")) {
         important_fiel_div.innerHTML = " "
         usual_fiel_div.innerHTML = " "
         filter(function bool(i) {
-
             return time(today[i]["date"]) > time(date())
         })
     }
@@ -901,7 +719,6 @@ function chenge(event) {
         important_fiel_div.innerHTML = " "
         usual_fiel_div.innerHTML = " "
         filter(function bool(i) {
-
             return weekend(today[i]["date"]) == 0 || weekend(today[i]["date"]) == 6
         })
     }
@@ -909,7 +726,6 @@ function chenge(event) {
         important_fiel_div.innerHTML = " "
         usual_fiel_div.innerHTML = " "
         filter(function bool(i) {
-
             return today[i]["importance"] == "important"
         })
     }
@@ -917,7 +733,6 @@ function chenge(event) {
         important_fiel_div.innerHTML = " "
         usual_fiel_div.innerHTML = " "
         filter(function bool(i) {
-
             return today[i]["importance"] == "usual"
         })
     }
@@ -925,7 +740,6 @@ function chenge(event) {
         important_fiel_div.innerHTML = " "
         usual_fiel_div.innerHTML = " "
         filter(function bool(i) {
-
             return time(today[i]["date"]) < time(date())
         })
     }
@@ -933,7 +747,6 @@ function chenge(event) {
         important_fiel_div.innerHTML = ""
         usual_fiel_div.innerHTML = ""
         filterTrash(function bool(i) {
-
             return today[i]["trash"] == true
         })
     }
@@ -941,7 +754,6 @@ function chenge(event) {
         important_fiel_div.innerHTML = ""
         usual_fiel_div.innerHTML = ""
         filterDone(function bool(i) {
-
             return today[i]["done"] == true && today[i]["trash"] == false
         })
     }
@@ -949,7 +761,6 @@ function chenge(event) {
         important_fiel_div.innerHTML = " "
         usual_fiel_div.innerHTML = " "
         filter(function bool(i) {
-
             return today[i]["categoris"] == "work"
         })
     }
@@ -957,7 +768,6 @@ function chenge(event) {
         important_fiel_div.innerHTML = " "
         usual_fiel_div.innerHTML = " "
         filter(function bool(i) {
-
             return today[i]["categoris"] == "personal"
         })
     }
@@ -965,13 +775,10 @@ function chenge(event) {
         important_fiel_div.innerHTML = " "
         usual_fiel_div.innerHTML = " "
         filter(function bool(i) {
-
             return today[i]["categoris"] == "other"
         })
     }
 }
-
-
 function date() {
     let d = new Date();
     let n2 = d.getFullYear();
