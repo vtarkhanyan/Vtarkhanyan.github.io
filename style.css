@@ -262,6 +262,20 @@ a:hover {
     display: none;
 
 }
+#port_item7 {
+
+     grid-column: 3;
+    grid-row-start: 3;
+    grid-row-end: ;
+
+}
+#port_item8 {
+
+     grid-column: 4;
+    grid-row-start: 3;
+    grid-row-end: ;
+
+}
 
 
 #my_port {
