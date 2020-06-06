@@ -710,6 +710,18 @@ a:hover {
         grid-row: 5;
 
     }
+       #port_item7 {
+
+        grid-column: 2;
+        grid-row: 6;
+
+    }
+       #port_item8 {
+
+        grid-column: 2;
+        grid-row: 7;
+
+    }
 
     #cont_list {
 
